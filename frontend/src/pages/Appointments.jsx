@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Calendar, User, Clock, AlertCircle } from 'lucide-react'
 
 const DEMO_APPOINTMENTS = [
   { id: 'A001', patient_id: 'P0042', clinic_id: 'CLINIC_001', appointment_type: 'specialist', patient_age_group: '31-45', has_chronic_condition: true, prior_noshows: 3, prior_appointments: 8, day_of_week: 0, hour_of_day: 9, clinic_load_pct: 0.85, risk: 'high', prob: 0.72 },
@@ -15,7 +14,6 @@ const IV_ICONS = { none: '—', sms: '📱 SMS', call: '📞 Call', overbook: '�
 
 export default function Appointments() {
   const [filter, setFilter] = useState('all')
-
   const filtered = filter === 'all' ? DEMO_APPOINTMENTS : DEMO_APPOINTMENTS.filter(a => a.risk === filter)
 
   return (
@@ -29,11 +27,10 @@ export default function Appointments() {
         </p>
       </div>
 
-      {/* Filter tabs */}
       <div style={{ display: 'flex', gap: 8, marginBottom: '1.25rem' }}>
         {['all', 'critical', 'high', 'medium', 'low'].map(tier => (
           <button key={tier} onClick={() => setFilter(tier)} style={{
-            padding: '5px 14px', borderRadius: 6, border: 'none', cursor: 'pointer',
+            padding: '5px 14px', borderRadius: 6, cursor: 'pointer',
             fontFamily: 'DM Mono', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.05em',
             background: filter === tier ? (tier === 'all' ? 'rgba(0,229,176,0.12)' : `${RISK_COLORS[tier]}20`) : 'var(--surface)',
             color: filter === tier ? (tier === 'all' ? 'var(--accent)' : RISK_COLORS[tier]) : 'var(--text-muted)',
@@ -45,7 +42,6 @@ export default function Appointments() {
         ))}
       </div>
 
-      {/* Table */}
       <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.82rem' }}>
           <thead>
@@ -56,7 +52,7 @@ export default function Appointments() {
             </tr>
           </thead>
           <tbody>
-            {filtered.map((appt, i) => (
+            {filtered.map((appt) => (
               <tr key={appt.id} style={{ borderBottom: '1px solid var(--border)', transition: 'background 0.1s' }}
                 onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.02)'}
                 onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
