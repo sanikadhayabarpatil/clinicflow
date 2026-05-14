@@ -1,0 +1,29 @@
+{
+  "version": "20260514_1347",
+  "train_rows": 40000,
+  "val_rows": 5000,
+  "noshow_rate_train": 0.260475,
+  "noshow_rate_val": 0.2556,
+  "auroc": 0.6152639762390691,
+  "brier": 0.18384234367011365,
+  "features": [
+    "lead_time_days",
+    "day_of_week",
+    "hour_of_day",
+    "is_monday",
+    "is_friday",
+    "is_morning",
+    "is_afternoon",
+    "historical_noshow_rate",
+    "prior_noshows",
+    "prior_appointments",
+    "rolling_attendance_3",
+    "is_first_appointment",
+    "clinic_load_pct",
+    "age_group_18_30",
+    "age_group_31_45",
+    "age_group_46_60",
+    "age_group_61_plus",
+    "has_chronic_condition"
+  ]
+}
